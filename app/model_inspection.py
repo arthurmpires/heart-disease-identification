@@ -9,7 +9,8 @@ def save_selected_hyperparameters(study):
     dfi.export(selected_hyperparameters, "../reports/selected_hyperparameters.png")
 
 def save_regression_coefficients(model, x_train):
-    g = sns.barplot(pd.Series(model[-1].coef_[0], x_train.columns).sort_values(), orient="h")
+    fig, ax = plt.subplots(figsize=(15,8))
+    g = sns.barplot(pd.Series(model[-1].coef_[0], x_train.columns).sort_values(), orient="h", ax=ax)
     g.set_title("Regression Coefficients")
     plt.savefig("../reports/regression_coeffients.png")
 
